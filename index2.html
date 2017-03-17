@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>scrollmagic demo</title>
+	<script src="js/jquery-3.1.0.js"></script>
+	<script src="js/ScrollMagic.js"></script>
+	<script src="js/plugins/debug.addIndicators.js"></script>
+	<style type="text/css">
+		.project{
+			opacity:0;
+			transform:translateY(100px);
+			transition: all 2s ease-out;
+		}
+		.project.fade-in{
+			opacity:1;
+			transform: translateY(0);
+		}
+	</style>
+</head>
+<body>
+
+<div class="content">
+	
+	<div  style="height:1000px;padding:100px;">
+		<div  id="intro" >
+			<img src="images/bg1.png" />
+		</div>
+	</div>
+	
+	<div  class="project" id="project01">
+		<img   src="images/bg2.png" />
+	</div>
+	
+
+	<div style="margin-top:200px;"  class="project" id="project02">
+		<img   src="images/bg2.png" />
+	</div>
+
+	<div style="margin-top:300px;"  class="project" id="project03">
+		<img   src="images/bg2.png" />
+	</div>
+	
+</div>
+
+<script>
+	$(document).ready(function(){
+
+		var controller=new ScrollMagic.Controller();
+		var pinIntroScene=new ScrollMagic.Scene({
+			triggerElement:"#intro",
+			duration:0,
+			triggerHook:0
+		}).addIndicators({
+			name:"intro scene",
+			colorTrigger:"red",
+			indent:200,
+			colorStart:'pink'
+		})
+		.setPin("#intro",{pushFollowers:false})
+		.addTo(controller)
+		;
+		
+		
+		// var ourScene=new ScrollMagic.Scene({
+		// 	triggerElement:"#project01", //被触发元素
+		// 	reverse:false,  //是否反复触发
+		// 	triggerHook:0,  //触发器的位置
+		// 	duration:"50%"  //触发器的作用范围   开始于结束位置的间距,百分比是按照视窗宽度,也可以用固定尺寸
+		// }).setClassToggle("#project01","fade-in")
+		// .addIndicators({
+		// 	name:"project01 scene",
+		// 	colorTrigger:"black",
+		// 	indent:200,
+		// 	colorStart:'pink'
+		// }).addTo(controller);
+
+
+		// var ourScene2=new ScrollMagic.Scene({
+		// 	triggerElement:"#project02",
+		// 	triggerHook:0.5,
+		// }).setClassToggle("#project02","fade-in")
+		// .addIndicators({
+		// 	name:"project02 scene",
+		// 	colorTrigger:"red",
+		// 	indent:200,
+		// 	colorStart:'pink'
+		// }).addTo(controller);
+
+
+		// $(".project").each(function(){
+
+		// 	var ourScene=new ScrollMagic.Scene({
+		// 		triggerElement:this,//this.children[0],
+		// 		reverse:true,  //是否反复触发
+		// 		triggerHook:0.9,  //触发器的位置
+		// 		//duration:"50%"  //触发器的作用范围   开始于结束位置的间距,百分比是按照视窗宽度,也可以用固定尺寸
+		// 	}).setClassToggle(this,"fade-in")
+		// 	.addIndicators({
+		// 		name:"fade scene",
+		// 		colorTrigger:"black",
+		// 		indent:200,
+		// 		colorStart:'pink'
+		// 	}).addTo(controller);
+
+		// });
+
+	});
+</script>
+
+</body>
+</html>
